@@ -1,4 +1,4 @@
-site_name: 3D-artan Documentation
+site_name: 3D-kartan Documentation
 nav:
   - Home: index.md
   - Install: install.md
