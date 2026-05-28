@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="None" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>3D-artan Documentation</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Home";
+        var mkdocs_page_input_path = "index.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> 3D-artan Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Home</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#important-notes">Important notes</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#available-scripts">Available scripts</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#simple-project-layout">Simple project layout</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="install/">Install</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="json/">JSON Config</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="terrain/">Terrain</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="3D-kartan-backend/">3D-kartan-backend</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="webpack-config/">Webpack-config</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">3D-artan Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Home</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="welcome-to-3d-kartans-documentation">Welcome to 3D-kartan:s documentation</h1>
+<p>3D-kartan is a 3D-WebMap application, built on Cesium JS. It is fully working and the UI is built to look like the Origo Map Open Source Project. To make users interactions with the 3D-map more convenient.</p>
+<p>Key features for the 3D-Map:</p>
+<ul>
+<li>Toolbar with a lot of easy to use tools:<ul>
+<li>Info</li>
+<li>Find-north</li>
+<li>Zoom in</li>
+<li>Zoom out</li>
+<li>Home</li>
+<li>Forms (requrie backend to be setup)</li>
+<li>Sun study</li>
+<li>Pedestrian mode</li>
+<li>Hide buildings</li>
+<li>Draw 3D</li>
+<li>Measure (lenght, area &amp; height)</li>
+<li>Placement </li>
+<li>Terrain-section</li>
+</ul>
+</li>
+<li>Project menu to display ongoing or planned constructuin sites in the city, featuring:<ul>
+<li>Text and image description</li>
+<li>Project related layers that can be toggled</li>
+<li>Zooming to project site</li>
+<li>Minimizing project info</li>
+<li>Pins on the map for the sites, and ability to toggle them</li>
+<li>Clipping of both layer menu tilesets and terrain</li>
+</ul>
+</li>
+<li>Layer menu featuring:<ul>
+<li>Easy toggling of both WMS- and 3D-tilesets layers.</li>
+<li>Zooming to 3D-tileset layers</li>
+<li>Layer abstracts</li>
+<li>Ability to change a layers opacity</li>
+<li>Search control on layers</li>
+</ul>
+</li>
+<li>Adress search, searching againt db table</li>
+<li>Menu with:<ul>
+<li>Share map</li>
+<li>Print</li>
+<li>Coordinates on mouse move toggle</li>
+<li>Option to toggling visual selection</li>
+</ul>
+</li>
+<li>Copy coordinates on right click</li>
+<li>Option to display your own logo</li>
+</ul>
+<h2 id="important-notes">Important notes</h2>
+<ul>
+<li>
+<p>If Cesium Ion is used, you are required to give proper contribution, i.e. the Cesium Ion logo has to be present in the model. Change the visiblity of the <code>.cesium-viewer-bottom</code> configured in <code>src/css/main.css</code> before building.</p>
+</li>
+<li>
+<p>It is recommended to use a non write access token, since the the token is not secure i.e. hidden from the user.</p>
+</li>
+</ul>
+<h2 id="requirements">Requirements</h2>
+<p>To be able to install the application you need the following installed: <code>node</code>, <code>npm</code> and <code>webpack</code>.</p>
+<h2 id="available-scripts">Available scripts</h2>
+<ul>
+<li><code>npm start</code> - Runs a webpack build with <code>webpack.config.js</code> and starts a development at <code>localhost:4000</code>.</li>
+<li><code>npm run build</code> - Runs a webpack build with <code>webpack.config.js</code>.</li>
+<li><code>npm run start:built</code> - Start a small static server using <code>http-server</code> to demonstrate hosting the built version.</li>
+</ul>
+<h2 id="simple-project-layout">Simple project layout</h2>
+<pre><code>webpack.config.js   # The configuration file for dev and build.
+buildings/          # Folder for building tilesets.
+    kommunNamn/
+        Omrade/
+            tileset.json  
+projects/           # Project structure.
+    project_1/
+        img/
+            examplebild.png
+        ClipMaskProject1.geojson
+public/             
+    index.json      # Main config file that inits the application.
+src/
+    config/
+        images/
+            icons/  # Folder for icons used in the application.
+            material-icons-svg/             # Material icons folder containing icons
+                black-icons/        
+                white-grey-icons/
+                material-icons-svg.css      # Mapping for css variables
+            png/    # Folder for instruction png and logo to be displayed in the application.
+        ui/         # Folder for ui code.
+            menuFunctions/                  # Folder for menu functions.
+        css/        # Folder for css to ui.
+        tools/      # Folder that contain subfolders for every tool and their css.
+    index.html      # Main html file.
+    index.js        # Main js file, intis the application.
+package.json        # Holds dependencies 
+package-lock.json   # Holds dependencies
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="install/" class="btn btn-neutral float-right" title="Install">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+      <span><a href="install/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 1.6.1
+Build Date UTC : 2026-05-28 08:02:02.074603+00:00
+-->

@@ -1,0 +1,9 @@
+site_name: 3D-artan Documentation
+nav:
+  - Home: index.md
+  - Install: install.md
+  - JSON Config: json.md
+  - Terrain: terrain.md
+  - 3D-kartan-backend: 3D-kartan-backend.md
+  - Webpack-config: webpack-config.md
+theme: readthedocs

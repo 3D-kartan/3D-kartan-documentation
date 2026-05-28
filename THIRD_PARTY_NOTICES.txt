@@ -1,0 +1,3 @@
+This documentation is built using MkDocs (https://www.mkdocs.org/).
+MkDocs is licensed under the BSD 2-Clause "Simplified" License.
+Full license text is available in ./licenses/MKDOCS_LICENSE.txt.

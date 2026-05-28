@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>JSON Config - 3D-artan Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "JSON Config";
+        var mkdocs_page_input_path = "json.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> 3D-artan Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../install/">Install</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">JSON Config</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#camera">Camera</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#proj4defs">Proj4Defs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#logo">Logo</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#searchbar">Searchbar</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#ion-id">ion id</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#terrain">Terrain</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#toolbar">Toolbar</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#projects">Projects</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#background-layers">Background Layers</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#styles">Styles</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#layer-menu">Layer menu</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#wms-layers">Wms-layers</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#tilesets">Tilesets</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#groups">Groups</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#full-json-config-example">FULL JSON CONFIG EXAMPLE</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../terrain/">Terrain</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../3D-kartan-backend/">3D-kartan-backend</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../webpack-config/">Webpack-config</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">3D-artan Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">JSON Config</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="json-config-file-parameters">JSON Config file parameters</h1>
+<p>The diffrent parts of the config for the application is defined in arrays.</p>
+<p>For a full example file see: <a href="#full-json-config-example">FULL JSON CONFIG EXAMPLE</a></p>
+<p>The following array parameters are required:</p>
+<ul>
+<li>Camera</li>
+<li>Proj4Defs</li>
+<li>Terrain</li>
+<li>Background Layers </li>
+<li>Styles</li>
+</ul>
+<hr />
+<h3 id="camera">Camera</h3>
+<p>Start position of the where application initiates, should be in <code>EPSG:4326</code>. </p>
+<p>The <code>minimimZoomDistance</code> and <code>maximumZoomDistance</code> are required to be set.</p>
+<pre><code class="language-JSON">&quot;camera&quot;: [
+    {
+      &quot;startExtent&quot;: [
+        15.671103064362,
+        60.21484248223163,
+        16.312895699095435,
+        59.91045413122643
+      ]
+    },
+    {
+      &quot;minimumZoomDistance&quot;: 1,
+      &quot;maximumZoomDistance&quot;: 60000
+    }
+  ],
+</code></pre>
+<hr />
+<h3 id="proj4defs">Proj4Defs</h3>
+<p>Here is the coordinate system defined. EPSG:4326 must be the first coordiante system in the array. The second one is the primary used in the model when displaying coordinates. I.e. when toggling it on in the top right menu. </p>
+<p>More systems can be added to the array to enable copying in diffrent systems.</p>
+<p>Important note: for the model to work you need at least <code>EPSG:4326</code> and <code>EPSG:3006</code> specified. Since the terrain-section tool uses both systems. An ideal config is as below: 1. <code>EPSG:4326</code>, 2. <code>Your local Sweref EPSG</code>, 3. <code>EPSG:3006</code>.</p>
+<pre><code class="language-JSON"> &quot;proj4Defs&quot;: [
+    {
+      &quot;code&quot;:      &quot;EPSG:4326&quot;,
+      &quot;alias&quot;:     &quot;urn:ogc:def:crs:EPSG::4326&quot;,
+      &quot;projection&quot;: &quot;+proj=longlat +datum=WGS84 +no_defs&quot;,
+      &quot;label&quot;:    &quot;WGS 84 (lat/lon)&quot;
+    },
+    {
+      &quot;code&quot;:      &quot;EPSG:3010&quot;,
+      &quot;alias&quot;:     &quot;urn:ogc:def:crs:EPSG::3010&quot;,
+      &quot;projection&quot;: &quot;+proj=tmerc +lat_0=0 +lon_0=16.5 +k=1 +x_0=150000 +y_0=0 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs&quot;,
+      &quot;label&quot;: &quot;SWEREF 99 16 30&quot;
+    },
+    {
+      &quot;code&quot;:      &quot;EPSG:3006&quot;,
+      &quot;alias&quot;:     &quot;urn:ogc:def:crs:EPSG::3006&quot;,
+      &quot;projection&quot;: &quot;+proj=utm +zone=33 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs +type=crs&quot;,
+      &quot;label&quot;: &quot;SWEREF 99 TM&quot; 
+    }
+  ],
+</code></pre>
+<hr />
+<h3 id="logo">Logo</h3>
+<p>If configured the model will display a logo. </p>
+<pre><code class="language-JSON">  &quot;logo&quot;: [
+    {
+      &quot;useLogo&quot;: true,
+      &quot;logoName&quot;: &quot;logo.png&quot;,
+      &quot;logoLocation&quot;: &quot;top-right-menu&quot;
+    }
+  ],
+</code></pre>
+<p>Possible values for <code>"logoLocation"</code> is either <code>"top-right-menu"</code> or <code>"bottom-middle"</code>.</p>
+<p>Place your logo in the /images/png folder. Rectangular images is best suited for use.  </p>
+<p><code>"top-right-menu"</code> - Is more discreet and places the logo in the menu at the top right of the screen.</p>
+<p><code>"bottom-middle"</code> - Highlights the logo better and places it in the bottom middle of the screen.</p>
+<hr />
+<h3 id="searchbar">Searchbar</h3>
+<p>Define if the application should have a searchbar that searches adresses in a postgis db. </p>
+<p>Values: <code>true</code> or <code>false</code></p>
+<pre><code class="language-JSON">&quot;searchbar&quot; : [ 
+    { 
+      &quot;active&quot; : true
+    } 
+  ],
+</code></pre>
+<p>For more information about how to set up the 3D-kartan-backend that handles searches to the database, see section <a href="../3D-kartan-backend/">3D-kartan-backend</a>.</p>
+<hr />
+<h3 id="ion-id">ion id</h3>
+<p>If Cesium ion is wished to be used for loading terrain or 3D-tilesets, then the <code>ionId</code> array need to be included.</p>
+<p>Possible values for <code>useIonId</code> are <code>true</code> or <code>false</code> and your id string.</p>
+<pre><code class="language-JSON">&quot;ionId&quot;: [
+    {
+      &quot;useIonId&quot;: true,
+      &quot;id&quot;: &quot;YOUR_ION_KEY&quot;
+    }
+  ],
+</code></pre>
+<hr />
+<h3 id="terrain">Terrain</h3>
+<p>Which terrain provider that should be used. Possible values for <code>terrainType</code>:</p>
+<p><code>world</code> - the least detaild terrain</p>
+<pre><code class="language-JSON">  &quot;terrain&quot;: [
+    {
+      &quot;terrainType&quot;: &quot;world&quot;  
+    }
+  ],
+</code></pre>
+<p><code>ion</code> - use a specified terrain stored i Cesium ion, make sure to also specify <code>assetId</code></p>
+<pre><code class="language-JSON">  &quot;terrain&quot;: [
+    {
+      &quot;terrainType&quot;: &quot;ion&quot;,        
+      &quot;assetId&quot;: 2202832    
+    }
+  ],
+</code></pre>
+<p><code>url</code> -  use a locally served terrain via IIS for example. Make sure to specify <code>url</code> location. The following folder structure are in the example below. </p>
+<p>/dist-folder containing the app</p>
+<p>/terrain-folder contating the tiles and layer.json</p>
+<pre><code class="language-JSON">  &quot;terrain&quot;: [
+    {
+      &quot;terrainType&quot;: &quot;url&quot;,
+      &quot;url&quot;: &quot;./terrainUrl&quot;
+    }
+  ],
+</code></pre>
+<p><code>ellipsoid</code> - use the WGS 84 ellipsoid, important note: some functions in the model require terrain tiles for sampling height, these functions does not work with <code>ellipsoid</code> terrain since it does not supply terrain tiles.</p>
+<pre><code class="language-JSON">  &quot;terrain&quot;: [
+    {
+      &quot;terrainType&quot;: &quot;ellipsoid&quot;  
+    }
+  ],
+</code></pre>
+<hr />
+<h3 id="toolbar">Toolbar</h3>
+<p>The toolbar includes a variety of tools that can be included or excluded in the application. </p>
+<p>These are the following possible tools:</p>
+<p><code>info</code> - Popup info, can be set to show navigation instruction image. Set your own popup text. Remeber it's json and that line break in strings is not allowed.</p>
+<p><code>find-north</code> - Rotates the camera so it is facing north.</p>
+<p><code>zoom-in</code> - Zoom in</p>
+<p><code>zoom-out</code> - Zoom out</p>
+<p><code>home</code> - Moves the camera to the initial start location.</p>
+<p><code>forms</code> - Adds forms functionallity, the admin configure submission forms in the forms admin backend. The user can submit answers to those forms. The forms-tool requries the backend to be set up. See <a href="../3D-kartan-backend/">3D-kartan-backend</a>.
+<code>"name"</code> is the visible name of the form to the user.<code>"id"</code> id string of the form to be loaded from the backend.</p>
+<pre><code class="language-JSON">  {
+    &quot;toolName&quot;: &quot;forms&quot;,
+    &quot;toolTip&quot;: &quot;Öppna formulärvy&quot;,
+    &quot;iconVar&quot;: &quot;--black-icon-share&quot;,
+    &quot;active&quot;: true,
+    &quot;forms&quot;: [
+    { &quot;name&quot;: &quot;Trygghetsformulär&quot;, &quot;id&quot;: &quot;form-id-string&quot; },
+    { &quot;name&quot;: &quot;Återvinningsformulär&quot;, &quot;id&quot;: &quot;form-id-string&quot; },
+    { &quot;name&quot;: &quot;Reparationsformulär&quot;, &quot;id&quot;: &quot;form-id-string&quot; }
+    ]
+  },
+</code></pre>
+<p><code>bookmarks</code> - Quick zooms to specified locations. These locations are set in the <code>index.json</code> file. Se this example:</p>
+<pre><code class="language-JSON">{
+    &quot;toolName&quot;: &quot;bookmarks&quot;,
+    &quot;toolTip&quot;: &quot;Öppna snabbzooms bokmärken&quot;,
+    &quot;iconVar&quot;: &quot;--black-icon-bookmarks&quot;,
+    &quot;active&quot;: true,
+    &quot;locations&quot;:[
+      {
+        &quot;name&quot;: &quot;Tumba&quot;,
+        &quot;position&quot;: 
+          {
+          &quot;lng&quot;: 17.864741,
+          &quot;lat&quot;: 59.198933,
+          &quot;height&quot;: 900
+          }
+      },
+      {
+        &quot;name&quot;: &quot;Tullinge&quot;,
+        &quot;position&quot;: 
+          {
+          &quot;lng&quot;: 17.886863,
+          &quot;lat&quot;: 59.200208,
+          &quot;height&quot;: 800
+          }
+      },
+    ]
+  },
+</code></pre>
+<p>The <code>"position"</code> object is required. It is also possible to set <code>"orientation"</code>, following this structure: </p>
+<pre><code class="language-JSON"> &quot;position&quot;: {
+    &quot;lng&quot;: 17.886863,
+    &quot;lat&quot;: 59.200208,
+    &quot;height&quot;: 800
+    },
+ &quot;orientation&quot;: {
+    &quot;heading&quot;: 0,
+    &quot;pitch&quot;: -45,
+    &quot;roll&quot;: 0
+    }
+</code></pre>
+<p><code>sun-study</code> - Set the desired time and date for accurate shadows in the model. Inital time value are from your devices (pc or mobile).</p>
+<p><code>pedestrian-mode</code> - Move around in "first person". </p>
+<p><code>hide-buildings</code> - Hide 3D-tiles objects via middle click.</p>
+<p><code>draw-3d</code> - Draw 3D polygons. Drawn polygon works with sun-study and casts shadows. Creates a flat floor on the lowest corner height, and a fixed "roof" on the height from the user input height above ground (calculated by the lowest cornerpoint + user input value). This means it's possible to create bridge like polygons over valleys.</p>
+<p><code>measure</code> - Measure line, area and height. The measurement is point (x,y,z) to point (x,y,z) based. Meaning there is no draped values. </p>
+<p><code>placement</code> - Place 3D-objects in the model. Example of models that can be used: trees or buildings.</p>
+<p><code>terrain-section</code> - Draw terrain section with equidistant- or interval placed points. CSV exports are available in configured <code>Proj4Defs</code></p>
+<p>If the tool json-object is included and <code>active: true</code> then the tool button will load. If <code>active: false</code> it will not load, it will also not load if the json-object is excluded from the config file.</p>
+<p>Here is a complete toolbar array including all tools:</p>
+<pre><code class="language-JSON">&quot;toolbar&quot;: [ 
+  {
+    &quot;toolName&quot;:   &quot;info&quot;,
+    &quot;toolTip&quot;:    &quot;Information&quot;,
+    &quot;iconVar&quot;:    &quot;--black-icon-info&quot;, 
+    &quot;actionType&quot;: &quot;popup&quot;,
+    &quot;showNavigationImg&quot;: true,
+    &quot;popupText&quot;:  &quot;Höjderna i modellen är indikativa eftersom terrängen är något förenklad och bör inte användas i beslut där hög noggranhet krävs. Har du ett ärende som kräver höjdberäkning med hög noggranhet? Kontaka Kart &amp; Mät på kartomat@avesta.se&quot;,
+    &quot;active&quot;:     true
+  },
+  {
+    &quot;toolName&quot;: &quot;find-north&quot;,
+    &quot;toolTip&quot;: &quot;Hitta norr&quot;,
+    &quot;iconVar&quot;: &quot;--black-icon-navigation&quot;,
+    &quot;actionType&quot;: &quot;rotateNorth&quot;,
+    &quot;active&quot;: true
+  },
+  {
+    &quot;toolName&quot;: &quot;zoom-in&quot;,
+    &quot;toolTip&quot;: &quot;Zooma in&quot;,
+    &quot;iconVar&quot;: &quot;--black-icon-add&quot;,
+    &quot;actionType&quot;: &quot;zoomIn&quot;,
+    &quot;active&quot;: true
+  },
+  {
+    &quot;toolName&quot;: &quot;zoom-out&quot;,
+    &quot;toolTip&quot;: &quot;Zooma ut&quot;,
+    &quot;iconVar&quot;: &quot;--black-icon-remove&quot;,
+    &quot;actionType&quot;: &quot;zoomOut&quot;,
+    &quot;active&quot;: true
+  },
+  {
+    &quot;toolName&quot;: &quot;home&quot;,
+    &quot;toolTip&quot;: &quot;Zooma till startvy&quot;,
+    &quot;iconVar&quot;: &quot;--black-icon-home&quot;,
+    &quot;actionType&quot;: &quot;goHome&quot;,
+    &quot;active&quot;: true
+  },
+  {
+    &quot;toolName&quot;: &quot;forms&quot;,
+    &quot;toolTip&quot;: &quot;Öppna formulärvy&quot;,
+    &quot;iconVar&quot;: &quot;--black-icon-share&quot;,
+    &quot;active&quot;: true,
+    &quot;forms&quot;: [
+    { &quot;name&quot;: &quot;Trygghetsformulär&quot;, &quot;id&quot;: &quot;form-id-string&quot; },
+    { &quot;name&quot;: &quot;Återvinningsformulär&quot;, &quot;id&quot;: &quot;form-id-string&quot; },
+    { &quot;name&quot;: &quot;Reparationsformulär&quot;, &quot;id&quot;: &quot;form-id-string&quot; }
+  ]
+  },
+  {
+    &quot;toolName&quot;: &quot;bookmarks&quot;,
+    &quot;toolTip&quot;: &quot;Öppna snabbzooms bokmärken&quot;,
+    &quot;iconVar&quot;: &quot;--black-icon-bookmarks&quot;,
+    &quot;active&quot;: true,
+    &quot;locations&quot;:[
+      {
+        &quot;name&quot;: &quot;Tumba&quot;,
+        &quot;position&quot;: 
+          {
+          &quot;lng&quot;: 17.864741,
+          &quot;lat&quot;: 59.198933,
+          &quot;height&quot;: 900
+          }
+      },
+      {
+        &quot;name&quot;: &quot;Tullinge&quot;,
+        &quot;position&quot;: 
+          {
+          &quot;lng&quot;: 17.886863,
+          &quot;lat&quot;: 59.200208,
+          &quot;height&quot;: 800
+          }
+      },
+    ]
+  },
+  {
+    &quot;toolName&quot;: &quot;sun-study&quot;,
+    &quot;toolTip&quot;: &quot;Solstudie&quot;,
+    &quot;iconVar&quot;:&quot;--black-icon-sun&quot;,
+    &quot;active&quot;: true
+  },
+  {
+    &quot;toolName&quot;: &quot;pedestrian-mode&quot;,
+    &quot;toolTip&quot;: &quot;Fotgängarläge&quot;,
+    &quot;iconVar&quot;:&quot;--black-icon-pedestrian&quot;,
+    &quot;active&quot;: true
+  },
+  { 
+    &quot;toolName&quot;: &quot;hide-buildings&quot;, 
+    &quot;toolTip&quot;: &quot;Göm byggnader&quot;, 
+    &quot;iconVar&quot;:&quot;--black-icon-visibility-off&quot;, 
+    &quot;active&quot;: true
+  },
+  { 
+    &quot;toolName&quot;: &quot;draw-3d&quot;, 
+    &quot;toolTip&quot;: &quot;Rita 3D-polygoner&quot;, 
+    &quot;iconVar&quot;:&quot;--black-icon-cube&quot;, 
+    &quot;active&quot;: true
+  },
+  {
+    &quot;toolName&quot;:   &quot;measure&quot;,
+    &quot;toolTip&quot;:    &quot;Mät area &amp; distans&quot;,
+    &quot;iconVar&quot;:    &quot;--black-icon-measure&quot;,
+    &quot;actionType&quot;: &quot;measure&quot;,
+    &quot;active&quot;:     true
+  },
+  {
+    &quot;toolName&quot;:   &quot;placement&quot;,
+    &quot;toolTip&quot;:    &quot;Placera 3D-modeller&quot;,
+    &quot;iconVar&quot;:    &quot;--black-icon-place-model&quot;,
+    &quot;actionType&quot;: &quot;panel&quot;,
+    &quot;active&quot;:     true
+  },
+  {
+    &quot;toolName&quot;:   &quot;terrain-section&quot;,
+    &quot;toolTip&quot;:    &quot;Rita terrängprofil&quot;,
+    &quot;iconVar&quot;:    &quot;--black-icon-landscape&quot;,
+    &quot;actionType&quot;: &quot;panel&quot;,
+    &quot;active&quot;:     true
+  },
+],
+</code></pre>
+<hr />
+<h3 id="projects">Projects</h3>
+<p>The application has support for a project menu.</p>
+<p>To utilize the built in project menu used for displaying planned projects in the city. Simply add the <code>"projects"</code> array.</p>
+<p>Each project requires a set of parameters to be set. These are: <code>"name"</code>, <code>"start-location"</code> and <code>"content"</code>.</p>
+<p><code>"terrainClipping"</code> and <code>"tilsetClipping"</code> are optional and can be set with either a geojson or a set of coordinates. See this example:</p>
+<pre><code class="language-JSON">  &quot;terrainClipping&quot;: {
+    &quot;url&quot;: &quot;./projects/project_1/Klippmask_Albytappan.geojson&quot;,
+    &quot;featureIndex&quot;: 0,
+    &quot;polygonIndex&quot;: 0 
+  },
+   &quot;tilesetClipping&quot;: {
+    &quot;positions&quot;: [[17.82,59.20],[17.82,59.19],[17.84,59.19],[17.84,59.20]]
+  },
+</code></pre>
+<p>If you want to use the same polygon for both clippings it´s enough to set either <code>"terrainClipping"</code> or <code>"tilsetClipping"</code>.</p>
+<p><code>"featureIndex"</code> and <code>"polygonIndex"</code> are optinal, if not set the first polygon is used in the geojson. These parameters can be used to select a specific feature if there are multiple features or select a specific polygon if there is a multipolygon. </p>
+<p>Important note: index 0 is the first object. Polygons with holes are not supported, the holes will be ignored.</p>
+<p>The <code>"terrainClipping"</code> are optional but requries <code>"inverse-terrain"</code>, <code>"inverse-tileset"</code>, <code>"terrain-enableAtStart"</code>, <code>"tileset-enableAtStart"</code> to be set.
+Possible values for these are <code>true</code> or <code>false</code>.</p>
+<p><code>"inverse-*" : true</code> - Everying outside the <code>"terrainClipping"</code> polygon is hidden.</p>
+<p><code>"inverse-*" : false</code> - Everying inside the <code>"terrainClipping"</code> polygon is hidden.</p>
+<p><code>"*-enableAtStart" : true</code> - The function is toggled on by default.</p>
+<p><code>"*-enableAtStart" : false</code> - The function is toggled off by default.</p>
+<p>Important note: for either <code>terrainclipping</code> or <code>tilesetclipping</code> to be present. Both the <code>inverse</code>-parameter and <code>enableAtStart</code>-parameter has to be configured.</p>
+<p>The camera can also be locked to look at the project if <code>"lock-camera": true</code>. The camera locking is taking input from the pins coordinates which mean the <code>"pin"</code> property also has to be set.</p>
+<p>Here is an example of a configuerd project:</p>
+<pre><code class="language-JSON">&quot;projects&quot; : [
+    {
+      &quot;name&quot;: &quot;Projekt busstorget Avesta&quot;,
+      &quot;html-description&quot;: &quot;&lt;p&gt;Här är en bild:&lt;/p&gt;&lt;img src=\&quot;./projects/project_1/imagery/gagata.JPG\&quot; alt=\&quot;Beskrivning\&quot; &gt;&quot;,
+      &quot;start-location&quot;: {
+        &quot;position&quot;: {
+          &quot;lng&quot;: 16.166,
+          &quot;lat&quot;: 60.128,
+          &quot;height&quot;: 5000
+        },
+        &quot;orientation&quot;: {
+          &quot;heading&quot;: 0,
+          &quot;pitch&quot;: -45,
+          &quot;roll&quot;: 0
+        }
+      },
+      &quot;pin&quot;: { 
+          &quot;lng&quot;: 16.166,
+          &quot;lat&quot;: 60.128,
+          &quot;height&quot;: 5000
+      },
+      &quot;content&quot;: [
+        {
+          &quot;name&quot;: &quot;Åsbo Dalahästen&quot;,
+          &quot;type&quot;: &quot;tileset&quot;,
+          &quot;url&quot;: &quot;buildings/avesta/asbo/tileset/tileset.json&quot;,
+          &quot;options&quot;: { &quot;maximumScreenSpaceError&quot;: 16 },
+          &quot;visible-at-start&quot;: true
+        },
+        {
+          &quot;name&quot;: &quot;True Ortho&quot;,
+          &quot;type&quot;: &quot;imagery&quot;,
+          &quot;provider&quot;: &quot;WMS&quot;,
+          &quot;url&quot;: &quot;MY_WMS_URL&quot;,
+          &quot;layers&quot;: &quot;trueOrtho&quot;,
+          &quot;parameters&quot;: {
+            &quot;format&quot;: &quot;image/png&quot;,
+            &quot;transparent&quot;: true
+          },
+          &quot;visible-at-start&quot;: false
+        }
+      ],
+      &quot;terrainClipping&quot;: {
+        &quot;positions&quot;: [[17.82,59.20],[17.82,59.19],[17.84,59.19],[17.84,59.20]]
+      },
+      &quot;inverse-terrain&quot;: false,
+      &quot;inverse-tilesets&quot;: false,
+      &quot;terrain-enableAtStart&quot;: false,
+      &quot;tileset-enableAtStart&quot;: true,
+      &quot;lock-camera&quot;: true
+      }
+    ],
+</code></pre>
+<p>The <code>html-description</code> is optional and can be used to provide a description to the project. It has support for including images. Make sure to put the images in the right folder.</p>
+<p>The <code>pin</code> is optional, if set i places a pin at the specified location. Clicking on the pin in the model opens the desired project. </p>
+<p>The 3D-tiles layers specified under <code>content</code> can be set to be visible at project inition via <code>visible-at-start: true</code>. It is also possible to set the the Cesium <code>maximumScreenSpaceError</code>.</p>
+<hr />
+<h3 id="background-layers">Background Layers</h3>
+<p>This array sets the baselayers for the model. </p>
+<p>Set the Key-Value pair <code>primary:true</code> on the baselayer that should be loaded as the primary baslayer</p>
+<p><code>style</code> sets the icon displayed in the layer menu. There are a set of icons included. It is possible to add more icons. The value of <code>style</code> refer to the array <code>styles</code> where icon paths are set. See <a href="#styles">Styles</a>.</p>
+<pre><code class="language-JSON"> &quot;backgroundLayers&quot;: [
+    {
+      &quot;name&quot;: &quot;OpenStreetMap&quot;,
+      &quot;type&quot;: &quot;OSM&quot;,
+      &quot;primary&quot;: true,
+      &quot;style&quot;: &quot;osm&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Ortofoto WMS&quot;,
+      &quot;type&quot;: &quot;WMS&quot;,
+      &quot;url&quot;: &quot;MY_WMS_URL&quot;,
+      &quot;layers&quot;: &quot;Ortofoto_0.16&quot;,
+      &quot;parameters&quot;: {
+        &quot;transparent&quot;: true,
+        &quot;format&quot;: &quot;image/png&quot;
+      },
+      &quot;style&quot;: &quot;orto_farg&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Topografiska kartan WMS&quot;,
+      &quot;type&quot;: &quot;WMS&quot;,
+      &quot;url&quot;: &quot;MY_WMS_URL&quot;,
+      &quot;layers&quot;: &quot;topowebbkartan&quot;,
+      &quot;parameters&quot;: {
+        &quot;transparent&quot;: true,
+        &quot;format&quot;: &quot;image/png&quot;
+      },
+      &quot;style&quot;: &quot;karta_farg&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Topografiska kartan nedtonad WMS&quot;,
+      &quot;type&quot;: &quot;WMS&quot;,
+      &quot;url&quot;: &quot;MY_WMS_URL&quot;,
+      &quot;layers&quot;: &quot;topowebbkartan_nedtonad&quot;,
+      &quot;parameters&quot;: {
+        &quot;transparent&quot;: true,
+        &quot;format&quot;: &quot;image/png&quot;
+      },
+      &quot;style&quot;: &quot;karta_gra&quot;
+    }
+  ],
+</code></pre>
+<hr />
+<h3 id="styles">Styles</h3>
+<p>The styles array sets the icon names and paths used for the <a href="#background-layers">Background layers</a>. It is possible to add more icon styles.
+Simply put your icon in the images/icons folder and add it in the array.</p>
+<pre><code class="language-JSON">  &quot;styles&quot;: [
+    {
+      &quot;name&quot;: &quot;orto_farg&quot;,
+      &quot;img&quot;: &quot;orto_farg.png&quot;
+    },
+    {
+      &quot;name&quot;: &quot;karta_farg&quot;,
+      &quot;img&quot;: &quot;karta_farg.png&quot;
+    },
+    {
+      &quot;name&quot;: &quot;karta_gra&quot;,
+      &quot;img&quot;: &quot;karta_gra.png&quot;
+    },
+    {
+      &quot;name&quot;: &quot;osm&quot;,
+      &quot;img&quot;: &quot;osm.png&quot;
+    }
+  ],
+</code></pre>
+<hr />
+<h2 id="layer-menu">Layer menu</h2>
+<p>The layer menu consits of the following types: 3D-tiles or WMS. </p>
+<p>Each type has its own array. <a href="#wms-layers">Wms Layers</a>. <a href="#tilesets">3D-tilesets</a>.</p>
+<p>A layer must belong to a <a href="#groups">Group</a>.</p>
+<hr />
+<h3 id="wms-layers">Wms-layers</h3>
+<p>Here are additional WMS-layer configured. They are placed above the <a href="#background-layers">Background Layer</a> in the drawing order. An additional parameter here is the <code>group</code> value, see <a href="#groups">Groups</a>.</p>
+<pre><code class="language-JSON">  &quot;wmsLayers&quot;: [
+    {
+      &quot;name&quot;: &quot;WMS_NAME_DISPLAYED_IN_LAYER_MENU&quot;,
+      &quot;type&quot;: &quot;WMS&quot;,
+      &quot;url&quot;: &quot;MY_WMS_URL&quot;,
+      &quot;layers&quot;: &quot;WMS_LAYER_NAME&quot;,
+      &quot;parameters&quot;: {
+        &quot;transparent&quot;: true,
+        &quot;format&quot;: &quot;image/png&quot;
+      },
+      &quot;group&quot;: &quot;WMS&quot;
+    }
+  ],
+</code></pre>
+<hr />
+<h3 id="tilesets">Tilesets</h3>
+<p>3D-tilesets can be used in the model and can be loaded locally or via Cesium ion. Which 3D-tilesets that should be included in the application are specified in the tilsets array, except the once that belong to a project in the <a href="#projects">Project menu</a>.</p>
+<p><code>name</code> - Unique id name.</p>
+<p><code>title</code> - Optional title, if set the title value will be displayed as the layer name in the layer menu. If not set the <code>name</code> will be displayed.</p>
+<p><code>group</code> - The group the 3D-tileset should belong to.</p>
+<p><code>url</code> - The url to your local 3D-tileset.</p>
+<p><code>options</code> - Has support for setting the Cesium <code>maximumScreenSpaceError</code>.</p>
+<p><code>visble-at-start</code> - If the layer should be displayed from the intion of the model. Possible values <code>true</code> or <code>false</code>.</p>
+<p><code>ionAssetId</code> - Needed to be set if you wish to load a tileset from ion. Remeber to set the <a href="#ion-id">ion id</a>!</p>
+<p><code>infoText</code> - If set the layer can display some info text belonging to the layer, is displayed by pressing the "three dots" button on the layer.</p>
+<p>Example config:</p>
+<pre><code class="language-JSON"> &quot;tilesets&quot;: [
+    {
+      &quot;name&quot;: &quot;Avesta Centrum&quot;,
+      &quot;title&quot;:&quot;Avesta Centrum&quot;,
+      &quot;group&quot;: &quot;avesta&quot;,
+      &quot;url&quot;: &quot;buildings/avesta/avestaCentrum_ny2_clean/tileset/tileset.json&quot;,
+      &quot;options&quot;: { &quot;maximumScreenSpaceError&quot;: 16 },
+      &quot;visible-at-start&quot;: true
+    },
+    {
+      &quot;name&quot;: &quot;Bergsnäs&quot;,
+      &quot;group&quot;: &quot;avesta1&quot;,
+      &quot;url&quot;: &quot;buildings/avesta/bergsnas_clean/tileset/tileset.json&quot;,
+      &quot;options&quot;: { &quot;maximumScreenSpaceError&quot;: 16 },
+      &quot;visible-at-start&quot;: true
+    },
+    {
+      &quot;name&quot;: &quot;Centrala Krylbo&quot;,
+      &quot;group&quot;: &quot;avesta2&quot;,
+      &quot;url&quot;: &quot;buildings/avesta/centralaKrylbo_clean/tileset/tileset.json&quot;,
+      &quot;options&quot;: { &quot;maximumScreenSpaceError&quot;: 16 },
+      &quot;visible-at-start&quot;: true
+    },
+    {
+      &quot;name&quot;: &quot;Ion Asset&quot;,
+      &quot;group&quot;: &quot;avesta&quot;,
+      &quot;ionAssetId&quot;: MY_ASSET_ID_IN_ION,
+      &quot;options&quot;: { &quot;maximumScreenSpaceError&quot;: 16 },
+      &quot;infoText&quot;: &quot;Laddat från ion.&quot;
+    },
+ ],
+
+</code></pre>
+<hr />
+<h3 id="groups">Groups</h3>
+<p>A layer (<a href="#wms-layers">WMS-Layer</a> or <a href="#tilesets">Tileset</a>) must belong to a group. Which are set up in the groups array. Groups can have subgrups and a subgrup can have a subgrup to itself. Per default three group levels are supported. If you wish to have more you have to change the core of 3D-kartan. </p>
+<p><code>name</code> - Unique id name.</p>
+<p><code>title</code> - The group name to be displayed in the layer menu.</p>
+<p><code>groups</code> - Optional, used to display subgrups.</p>
+<p>Example config: </p>
+<pre><code class="language-JSON">  &quot;groups&quot;: [
+    {
+      &quot;name&quot;: &quot;Buildings&quot;,
+      &quot;title&quot;: &quot;Byggnader&quot;,
+      &quot;groups&quot;: [
+        {
+          &quot;name&quot;: &quot;avesta&quot;,
+          &quot;title&quot;: &quot;Avesta nedtonad&quot;,
+          &quot;groups&quot;: [
+            {
+              &quot;name&quot;: &quot;avesta1&quot;,
+              &quot;title&quot;: &quot;Avesta nedtonad1&quot;
+            }
+          ]
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;avesta_textur&quot;,
+      &quot;title&quot;: &quot;Avesta textur&quot;
+    },
+    {
+      &quot;name&quot;: &quot;WMS&quot;,
+      &quot;title&quot;: &quot;Kartlager&quot;
+    }
+  ],
+</code></pre>
+<hr />
+<h2 id="full-json-config-example">FULL JSON CONFIG EXAMPLE</h2>
+<pre><code class="language-JSON">
+
+{
+  &quot;camera&quot;: [
+    {
+      &quot;startExtent&quot;: [
+        15.671103064362,
+        60.21484248223163,
+        16.312895699095435,
+        59.91045413122643
+      ]
+    },
+    {
+      &quot;minimumZoomDistance&quot;: 1,
+      &quot;maximumZoomDistance&quot;: 60000
+    }
+  ],
+  &quot;proj4Defs&quot;: [
+    {
+      &quot;code&quot;:      &quot;EPSG:4326&quot;,
+      &quot;alias&quot;:     &quot;urn:ogc:def:crs:EPSG::4326&quot;,
+      &quot;projection&quot;: &quot;+proj=longlat +datum=WGS84 +no_defs&quot;,
+      &quot;label&quot;:    &quot;WGS 84 (lat/lon)&quot;
+    },
+    {
+      &quot;code&quot;:      &quot;EPSG:3010&quot;,
+      &quot;alias&quot;:     &quot;urn:ogc:def:crs:EPSG::3010&quot;,
+      &quot;projection&quot;: &quot;+proj=tmerc +lat_0=0 +lon_0=16.5 +k=1 +x_0=150000 +y_0=0 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs&quot;,
+      &quot;label&quot;: &quot;SWEREF 99 16 30&quot;
+    },
+    {
+      &quot;code&quot;:      &quot;EPSG:3006&quot;,
+      &quot;alias&quot;:     &quot;urn:ogc:def:crs:EPSG::3006&quot;,
+      &quot;projection&quot;: &quot;+proj=utm +zone=33 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs +type=crs&quot;,
+      &quot;label&quot;: &quot;SWEREF 99 TM&quot; 
+    }
+  ],
+  &quot;searchbar&quot; : [ 
+    { 
+      &quot;active&quot; : true
+    } 
+  ],
+  &quot;ionId&quot;: [
+    {
+      &quot;useIonId&quot;: true,
+      &quot;id&quot;: &quot;MY_ION_ID&quot;
+    }
+  ],
+  &quot;terrain&quot;: [
+    {
+      &quot;terrainType&quot;: &quot;ion&quot;,        
+      &quot;assetId&quot;: 2202832    
+    }
+  ],
+  &quot;logo&quot;: [
+    {
+      &quot;useLogo&quot;: true,
+      &quot;logoName&quot;: &quot;logo.png&quot;,
+      &quot;logoLocation&quot;: &quot;top-right-menu&quot;
+    }
+  ],
+  &quot;toolbar&quot;: [
+    {
+      &quot;toolName&quot;:   &quot;info&quot;,
+      &quot;toolTip&quot;:    &quot;Information&quot;,
+      &quot;iconVar&quot;:    &quot;--black-icon-info&quot;,
+      &quot;actionType&quot;: &quot;popup&quot;,
+      &quot;showNavigationImg&quot;: true,
+      &quot;popupText&quot;:  &quot;Höjderna i modellen är indikativa eftersom terrängen är något förenklad och bör inte användas i beslut där hög noggranhet krävs. Har du ett ärende som kräver höjdberäkning med hög noggranhet? Kontaka Kart &amp; Mät på enhetsmailen@exempel.se&quot;,
+      &quot;active&quot;:     true
+    },
+    {
+      &quot;toolName&quot;: &quot;find-north&quot;,
+      &quot;toolTip&quot;: &quot;Hitta norr&quot;,
+      &quot;iconVar&quot;: &quot;--black-icon-navigation&quot;,
+      &quot;actionType&quot;: &quot;rotateNorth&quot;,
+      &quot;active&quot;: true
+    },
+    {
+      &quot;toolName&quot;: &quot;zoom-in&quot;,
+      &quot;toolTip&quot;: &quot;Zooma in&quot;,
+      &quot;iconVar&quot;: &quot;--black-icon-add&quot;,
+      &quot;actionType&quot;: &quot;zoomIn&quot;,
+      &quot;active&quot;: true
+    },
+    {
+      &quot;toolName&quot;: &quot;zoom-out&quot;,
+      &quot;toolTip&quot;: &quot;Zooma ut&quot;,
+      &quot;iconVar&quot;: &quot;--black-icon-remove&quot;,
+      &quot;actionType&quot;: &quot;zoomOut&quot;,
+      &quot;active&quot;: true
+    },
+    {
+      &quot;toolName&quot;: &quot;home&quot;,
+      &quot;toolTip&quot;: &quot;Zooma till startvy&quot;,
+      &quot;iconVar&quot;: &quot;--black-icon-home&quot;,
+      &quot;actionType&quot;: &quot;goHome&quot;,
+      &quot;active&quot;: true
+    },
+    {
+      &quot;toolName&quot;: &quot;forms&quot;,
+      &quot;toolTip&quot;: &quot;Öppna formulärvy&quot;,
+      &quot;iconVar&quot;: &quot;--black-icon-share&quot;,
+      &quot;active&quot;: true,
+      &quot;forms&quot;: [
+        { &quot;name&quot;: &quot;Trygghetsformulär&quot;, &quot;id&quot;: &quot;form-id-string&quot; },
+        { &quot;name&quot;: &quot;Återvinningsformulär&quot;, &quot;id&quot;: &quot;form-id-string&quot; },
+        { &quot;name&quot;: &quot;Reparationsformulär&quot;, &quot;id&quot;: &quot;form-id-string&quot; }
+      ]
+    },
+    {
+      &quot;toolName&quot;: &quot;bookmarks&quot;,
+      &quot;toolTip&quot;: &quot;Öppna snabbzooms bokmärken&quot;,
+      &quot;iconVar&quot;: &quot;--black-icon-bookmarks&quot;,
+      &quot;active&quot;: true,
+      &quot;locations&quot;:[
+        {
+          &quot;name&quot;: &quot;Tumba&quot;,
+          &quot;position&quot;: 
+            {
+            &quot;lng&quot;: 17.864741,
+            &quot;lat&quot;: 59.198933,
+            &quot;height&quot;: 900
+            }
+        },
+        {
+          &quot;name&quot;: &quot;Tullinge&quot;,
+          &quot;position&quot;: 
+            {
+            &quot;lng&quot;: 17.886863,
+            &quot;lat&quot;: 59.200208,
+            &quot;height&quot;: 800
+            }
+        },
+      ]
+    },
+    {
+      &quot;toolName&quot;: &quot;sun-study&quot;,
+      &quot;toolTip&quot;: &quot;Solstudie&quot;,
+      &quot;iconVar&quot;: &quot;--black-icon-sun&quot;,
+      &quot;active&quot;: true
+    },
+    {
+      &quot;toolName&quot;: &quot;pedestrian-mode&quot;,
+      &quot;toolTip&quot;: &quot;Fotgängarläge&quot;,
+      &quot;iconVar&quot;: &quot;--black-icon-pedestrian&quot;,
+      &quot;active&quot;: true
+    },
+    { 
+      &quot;toolName&quot;: &quot;hide-buildings&quot;, 
+      &quot;toolTip&quot;: &quot;Göm byggnader&quot;, 
+      &quot;iconVar&quot;: &quot;--black-icon-visibility-off&quot;, 
+      &quot;active&quot;: true
+    },
+    { 
+      &quot;toolName&quot;: &quot;draw-3d&quot;, 
+      &quot;toolTip&quot;: &quot;Rita 3D-polygoner&quot;, 
+      &quot;iconVar&quot;: &quot;--black-icon-cube&quot;, 
+      &quot;active&quot;: true
+    },
+    {
+      &quot;toolName&quot;: &quot;measure&quot;,
+      &quot;toolTip&quot;: &quot;Mät area &amp; distans&quot;,
+      &quot;iconVar&quot;: &quot;--black-icon-measure&quot;,
+      &quot;actionType&quot;: &quot;measure&quot;,
+      &quot;active&quot;: true
+    },
+    {
+      &quot;toolName&quot;: &quot;placement&quot;,
+      &quot;toolTip&quot;: &quot;Placera 3D-modeller&quot;,
+      &quot;iconVar&quot;: &quot;--black-icon-place-model&quot;,
+      &quot;actionType&quot;: &quot;panel&quot;,
+      &quot;active&quot;: true
+    }
+  ],
+  &quot;projects&quot; : [
+    {
+      &quot;name&quot;: &quot;Projekt busstorget Avesta&quot;,
+      &quot;html-description&quot;: &quot;&lt;p&gt;Här är en bild:&lt;/p&gt;&lt;img src=\&quot;/projects/project_1/imagery/gagata.JPG\&quot; alt=\&quot;Beskrivning\&quot; &gt;&quot;,
+      &quot;start-location&quot;: {
+        &quot;position&quot;: {
+          &quot;lng&quot;: 16.166,
+          &quot;lat&quot;: 60.128,
+          &quot;height&quot;: 5000
+        },
+        &quot;orientation&quot;: {
+          &quot;heading&quot;: 0,
+          &quot;pitch&quot;: -45,
+          &quot;roll&quot;: 0
+        }
+      },
+      &quot;pin&quot;: { 
+          &quot;lng&quot;: 16.166,
+          &quot;lat&quot;: 60.128,
+          &quot;height&quot;: 5000
+      },
+      &quot;content&quot;: [
+        {
+          &quot;name&quot;: &quot;Avesta Centrum&quot;,
+          &quot;type&quot;: &quot;tileset&quot;,
+          &quot;url&quot;: &quot;buildings/avesta/avestaCentrum_ny2/tileset/tileset.json&quot;,
+          &quot;options&quot;: { &quot;maximumScreenSpaceError&quot;: 16 },
+          &quot;visible-at-start&quot;: true
+        },
+        {
+          &quot;name&quot;: &quot;Åsbo&quot;,
+          &quot;type&quot;: &quot;tileset&quot;,
+          &quot;url&quot;: &quot;buildings/avesta/asbo/tileset/tileset.json&quot;,
+          &quot;options&quot;: { &quot;maximumScreenSpaceError&quot;: 16 },
+          &quot;visible-at-start&quot;: true
+        },
+        {
+          &quot;name&quot;: &quot;Plankarta&quot;,
+          &quot;type&quot;: &quot;imagery&quot;,
+          &quot;provider&quot;: &quot;WMS&quot;,
+          &quot;url&quot;: &quot;MY_WMS_URL&quot;,
+          &quot;layers&quot;: &quot;trueOrthoTT&quot;,
+          &quot;parameters&quot;: {
+            &quot;format&quot;: &quot;image/png&quot;,
+            &quot;transparent&quot;: true
+          },
+          &quot;visible-at-start&quot;: false
+        }
+      ],
+      &quot;terrainClipping&quot;: {
+      &quot;url&quot;: &quot;./projects/project_1/Klippmask_Terrain.geojson&quot;,
+      &quot;featureIndex&quot;: 0,
+      &quot;polygonIndex&quot;: 0 
+      },
+      &quot;tilesetClipping&quot;: {
+      &quot;url&quot;: &quot;./projects/project_1/Klippmask_Buildings.geojson&quot;,
+      &quot;featureIndex&quot;: 0,
+      &quot;polygonIndex&quot;: 0 
+      },
+      &quot;inverse-terrain&quot;: false,
+      &quot;inverse-tilesets&quot;: false,
+      &quot;terrain-enableAtStart&quot;: true,
+      &quot;tileset-enableAtStart&quot;: false,
+      &quot;lock-camera&quot;: true
+    },
+  ],
+  &quot;backgroundLayers&quot;: [
+    {
+      &quot;name&quot;: &quot;OpenStreetMap&quot;,
+      &quot;type&quot;: &quot;OSM&quot;,
+      &quot;primary&quot;: true,
+      &quot;style&quot;: &quot;osm&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Ortofoto WMS&quot;,
+      &quot;type&quot;: &quot;WMS&quot;,
+      &quot;url&quot;: &quot;MY_WMS_URL&quot;,
+      &quot;layers&quot;: &quot;Ortofoto_0.16&quot;,
+      &quot;parameters&quot;: {
+        &quot;transparent&quot;: true,
+        &quot;format&quot;: &quot;image/png&quot;
+      },
+      &quot;style&quot;: &quot;orto_farg&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Topografiska kartan WMS&quot;,
+      &quot;type&quot;: &quot;WMS&quot;,
+      &quot;url&quot;: &quot;MY_WMS_URL&quot;,
+      &quot;layers&quot;: &quot;topowebbkartan&quot;,
+      &quot;parameters&quot;: {
+        &quot;transparent&quot;: true,
+        &quot;format&quot;: &quot;image/png&quot;
+      },
+      &quot;style&quot;: &quot;karta_farg&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Topografiska kartan nedtonad WMS&quot;,
+      &quot;type&quot;: &quot;WMS&quot;,
+      &quot;url&quot;: &quot;MY_WMS_URL&quot;,
+      &quot;layers&quot;: &quot;topowebbkartan_nedtonad&quot;,
+      &quot;parameters&quot;: {
+        &quot;transparent&quot;: true,
+        &quot;format&quot;: &quot;image/png&quot;
+      },
+      &quot;style&quot;: &quot;karta_gra&quot;
+    }
+  ],
+  &quot;wmsLayers&quot;: [
+    {
+      &quot;name&quot;: &quot;True Ortofoto TT 2020&quot;,
+      &quot;type&quot;: &quot;WMS&quot;,
+      &quot;url&quot;: &quot;MY_WMS_URL&quot;,
+      &quot;layers&quot;: &quot;trueOrthoTT&quot;,
+      &quot;parameters&quot;: {
+        &quot;transparent&quot;: true,
+        &quot;format&quot;: &quot;image/png&quot;
+      },
+      &quot;group&quot;: &quot;WMS&quot;
+    }
+  ],
+  &quot;groups&quot;: [
+    {
+      &quot;name&quot;: &quot;Buildings&quot;,
+      &quot;title&quot;: &quot;Byggnader&quot;,
+      &quot;groups&quot;: [
+        {
+          &quot;name&quot;: &quot;avesta&quot;,
+          &quot;title&quot;: &quot;Avesta nedtonad&quot;
+        },
+        {
+          &quot;name&quot;: &quot;WMS&quot;,
+          &quot;title&quot;: &quot;Kartlager&quot;
+        }
+      ]
+    }
+  ],
+  &quot;styles&quot;: [
+    {
+      &quot;name&quot;: &quot;orto_farg&quot;,
+      &quot;img&quot;: &quot;orto_farg.png&quot;
+    },
+    {
+      &quot;name&quot;: &quot;karta_farg&quot;,
+      &quot;img&quot;: &quot;karta_farg.png&quot;
+    },
+    {
+      &quot;name&quot;: &quot;karta_gra&quot;,
+      &quot;img&quot;: &quot;karta_gra.png&quot;
+    },
+    {
+      &quot;name&quot;: &quot;osm&quot;,
+      &quot;img&quot;: &quot;osm.png&quot;
+    }
+  ],
+  &quot;tilesets&quot;: [
+    {
+      &quot;name&quot;: &quot;Ion Asset&quot;,
+      &quot;group&quot;: &quot;avesta&quot;,
+      &quot;ionAssetId&quot;: MY_ION_ID,
+      &quot;options&quot;: { &quot;maximumScreenSpaceError&quot;: 16 },
+      &quot;infoText&quot;: &quot;Laddat från ion.&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Åvestadal&quot;,
+      &quot;group&quot;: &quot;avesta&quot;,
+      &quot;url&quot;: &quot;buildings/avesta/avestadal_clean/tileset/tileset.json&quot;,
+      &quot;options&quot;: { &quot;maximumScreenSpaceError&quot;: 16 }
+    },
+    {
+      &quot;name&quot;: &quot;Bergsnäs&quot;,
+      &quot;group&quot;: &quot;avesta&quot;,
+      &quot;url&quot;: &quot;buildings/avesta/bergsnas_clean/tileset/tileset.json&quot;,
+      &quot;options&quot;: { &quot;maximumScreenSpaceError&quot;: 16 }
+    },
+    {
+      &quot;name&quot;: &quot;Centrala Krylbo&quot;,
+      &quot;group&quot;: &quot;avesta&quot;,
+      &quot;url&quot;: &quot;buildings/avesta/centralaKrylbo_clean/tileset/tileset.json&quot;,
+      &quot;options&quot;: { &quot;maximumScreenSpaceError&quot;: 16 }
+    }
+  ]
+}
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../install/" class="btn btn-neutral float-left" title="Install"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../terrain/" class="btn btn-neutral float-right" title="Terrain">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../install/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../terrain/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>3D-kartan-backend - 3D-artan Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "3D-kartan-backend";
+        var mkdocs_page_input_path = "3D-kartan-backend.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> 3D-artan Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../install/">Install</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../json/">JSON Config</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../terrain/">Terrain</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">3D-kartan-backend</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#set-up-the-backend">Set up the backend</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#admin-interface-for-forms-management">Admin interface for forms management</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#recommended-requirements">Recommended requirements:</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../webpack-config/">Webpack-config</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">3D-artan Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">3D-kartan-backend</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="3d-kartan-backend-set-up-guide">3D-kartan-backend set up guide</h1>
+<p>The backend only need to be set up if you wish to use the searchbar that searches adresses in a Postgis db and/or use of the <code>forms tool</code>.</p>
+<h2 id="set-up-the-backend">Set up the backend</h2>
+<ol>
+<li>Clone the repo</li>
+<li>CD app</li>
+<li><code>npm install</code></li>
+<li>Configure proper PostgreSQL + PostGIS setup (schema, tables and user)</li>
+<li>Set the proper <code>.env</code> variables (you also have to run <code>hash-admin-password.js</code> to get your hashed password)</li>
+<li>If you wish to deply the service with auto start in an server environment. 
+Set up a task, running the <code>.bat</code> script triggering <code>node server.js</code></li>
+<li>If you wish to skip auto start, then just run <code>node server.js</code> and the service will be up an running</li>
+</ol>
+<p>The backend runs on <code>localhost:4001</code> and can be accesible by the frontend with proper cors in the <code>.env</code>file and URL rewrites in IIS.</p>
+<hr />
+<h2 id="admin-interface-for-forms-management">Admin interface for forms management</h2>
+<p>The backend comes with three html sites one for forms creating, one for viewing forms submissions and one that handles the login. The admin interface is protected by a cookie-based basic encryption.</p>
+<p>They are locally reached from:</p>
+<ul>
+<li><code>localhost:4001/admin/forms.html</code></li>
+<li><code>localhost:4001/admin/submissions.html</code></li>
+<li><code>localhost:4001/admin/login.html</code></li>
+</ul>
+<p>or public (via URL Rewrite)</p>
+<ul>
+<li><code>https://your-URL/admin/forms.html</code></li>
+<li><code>https://your-URL/admin/forms.html</code></li>
+<li><code>https://your-URL/admin/forms.html</code></li>
+</ul>
+<hr />
+<h2 id="recommended-requirements">Recommended requirements:</h2>
+<ul>
+<li>PostgreSQL + PostGIS (DB to store forms and sumbission and search addresses).</li>
+<li>Deployment on a Microsoft server with IIS.</li>
+<li>Good knowledge of DB, Microsoft server + IIS and the basics of coding.</li>
+<li>To have a PostgreSQL + PostGIS base set up, then you can take a look at the psql script - as a guide for how the backend is set up. You can create your own schema, tables and roles but then you have to change the code to match your set up.</li>
+</ul>
+<hr />
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../terrain/" class="btn btn-neutral float-left" title="Terrain"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../webpack-config/" class="btn btn-neutral float-right" title="Webpack-config">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../terrain/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../webpack-config/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
