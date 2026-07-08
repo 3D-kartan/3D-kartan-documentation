@@ -481,7 +481,8 @@ Here is an example of a configuerd project:
           "type": "tileset",
           "url": "buildings/avesta/asbo/tileset/tileset.json",
           "options": { "maximumScreenSpaceError": 16 },
-          "visible-at-start": true
+          "visible-at-start": true,
+          "heightOffset": 20
         },
         {
           "name": "True Ortho",
@@ -512,7 +513,7 @@ The `html-description` is optional and can be used to provide a description to t
 
 The `pin` is optional, if set i places a pin at the specified location. Clicking on the pin in the model opens the desired project. 
 
-The 3D-tiles layers specified under `content` can be set to be visible at project inition via `visible-at-start: true`. It is also possible to set the the Cesium `maximumScreenSpaceError`.
+The 3D-tiles layers specified under `content` can be set to be visible at project inition via `visible-at-start: true`. It is also possible to set the the Cesium `maximumScreenSpaceError`. If the 3D-tileset needs to be offset that is also possible via the `heightOffset`, both positive and negative values are accepted for example `20.3` or `-20.3`.
 
 
 ---
