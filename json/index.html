@@ -496,7 +496,8 @@ Possible values for these are <code>true</code> or <code>false</code>.</p>
           &quot;type&quot;: &quot;tileset&quot;,
           &quot;url&quot;: &quot;buildings/avesta/asbo/tileset/tileset.json&quot;,
           &quot;options&quot;: { &quot;maximumScreenSpaceError&quot;: 16 },
-          &quot;visible-at-start&quot;: true
+          &quot;visible-at-start&quot;: true,
+          &quot;heightOffset&quot;: 20
         },
         {
           &quot;name&quot;: &quot;True Ortho&quot;,
@@ -524,7 +525,7 @@ Possible values for these are <code>true</code> or <code>false</code>.</p>
 </code></pre>
 <p>The <code>html-description</code> is optional and can be used to provide a description to the project. It has support for including images. Make sure to put the images in the right folder.</p>
 <p>The <code>pin</code> is optional, if set i places a pin at the specified location. Clicking on the pin in the model opens the desired project. </p>
-<p>The 3D-tiles layers specified under <code>content</code> can be set to be visible at project inition via <code>visible-at-start: true</code>. It is also possible to set the the Cesium <code>maximumScreenSpaceError</code>.</p>
+<p>The 3D-tiles layers specified under <code>content</code> can be set to be visible at project inition via <code>visible-at-start: true</code>. It is also possible to set the the Cesium <code>maximumScreenSpaceError</code>. If the 3D-tileset needs to be offset that is also possible via the <code>heightOffset</code>, both positive and negative values are accepted for example <code>20.3</code> or <code>-20.3</code>.</p>
 <hr />
 <h3 id="background-layers">Background Layers</h3>
 <p>This array sets the baselayers for the model. </p>
