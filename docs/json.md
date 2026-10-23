@@ -69,6 +69,20 @@ Important note: for the model to work you need at least `EPSG:4326` and `EPSG:30
     }
   ],
 ```
+---
+### Coordinate precision
+
+Coordinate display precision values (i.e. coordinates toggled by the top-right-menu) can be set in index.json for easier set-up. It has a default fallback if not set in the index.json. The Z value is also used in the right click menu. Accepted values are `integer`.
+
+```JSON
+  "displayed-coordinate-precision": [
+      {
+        "E": 3,
+        "N": 3,
+        "Z": 1
+      }
+    ],
+```
 
 ---
 ### Logo
@@ -272,7 +286,35 @@ The `"position"` object is required. It is also possible to set `"orientation"`,
 
 `measure` - Measure line, area and height. The measurement is point (x,y,z) to point (x,y,z) based. Meaning there is no draped values. 
 
-`placement` - Place 3D-objects in the model. Example of models that can be used: trees or buildings.
+`placement` - Place 3D-objects in the model. Example of models that can be used: trees or buildings. Accepted formats are `.glb` and `.gltf`. The `"id"` must be unique, the same source model are not allowed to be specified more than once. The `"heightM"` are optional, it's used for calculating the heigh label. For correct use, you need to know your models height. Possible values for `"allow-local-objects"` are `true` or `false`. If set to `true` the user can import their own models into 3D-kartan. Locally imported models can not be saved by the tools saving function. Neither can they display height labels. The saving is using the `"id"` so it's recommended that it is stable over time. Source models are not allowed to have external reference files.
+Config the tool following this structure:
+
+```JSON
+{
+    "toolName":   "placement",
+    "toolTip":    "Placera 3D-modeller",
+    "iconVar":    "--black-icon-place-model",
+    "actionType": "panel",
+    "active":     true,
+    "models": [
+      {
+        "id" : "building_1",
+        "label": "Byggnad_1",
+        "src": "models/byggnad_1/byggnad_1.glb",
+        "heightM": 5
+      },
+      {
+        "id" : "building_2",
+        "label": "Byggnad_2",
+        "src": "models/byggnad_2/byggnad_2.glb",
+        "heightM": 8.5
+      }
+    ],
+    "allow-local-objects": true
+  },
+
+```
+
 
 `terrain-section` - Draw terrain section with equidistant- or interval placed points. CSV exports are available in configured `Proj4Defs`
 
@@ -393,7 +435,22 @@ Here is a complete toolbar array including all tools:
     "toolTip":    "Placera 3D-modeller",
     "iconVar":    "--black-icon-place-model",
     "actionType": "panel",
-    "active":     true
+    "active":     true,
+    "models": [
+      {
+        "id" : "building_1",
+        "label": "Byggnad_1",
+        "src": "models/byggnad_1/byggnad_1.glb",
+        "heightM": 5
+      },
+      {
+        "id" : "building_2",
+        "label": "Byggnad_2",
+        "src": "models/byggnad_2/byggnad_2.glb",
+        "heightM": 8.5
+      }
+    ],
+    "allow-local-objects": true
   },
   {
     "toolName":   "terrain-section",
@@ -774,6 +831,13 @@ Example config:
       "label": "SWEREF 99 TM" 
     }
   ],
+  "displayed-coordinate-precision": [
+    {
+      "E": 3,
+      "N": 3,
+      "Z": 1
+    }
+  ],
   "searchbar" : [ 
     { 
       "active" : true
@@ -905,11 +969,33 @@ Example config:
       "active": true
     },
     {
-      "toolName": "placement",
-      "toolTip": "Placera 3D-modeller",
-      "iconVar": "--black-icon-place-model",
+    "toolName":   "placement",
+    "toolTip":    "Placera 3D-modeller",
+    "iconVar":    "--black-icon-place-model",
+    "actionType": "panel",
+    "active":     true,
+    "models": [
+      {
+        "id" : "building_1",
+        "label": "Byggnad_1",
+        "src": "models/byggnad_1/byggnad_1.glb",
+        "heightM": 5
+      },
+      {
+        "id" : "building_2",
+        "label": "Byggnad_2",
+        "src": "models/byggnad_2/byggnad_2.glb",
+        "heightM": 8.5
+      }
+    ],
+    "allow-local-objects": true
+    },
+    {
+      "toolName":   "terrain-section",
+      "toolTip":    "Rita terrängprofil",
+      "iconVar":    "--black-icon-landscape",
       "actionType": "panel",
-      "active": true
+      "active":     true
     }
   ],
   "projects" : [

@@ -37,6 +37,7 @@ Key features for the 3D-Map:
     - Print
     - Coordinates on mouse move toggle
     - Option to toggling visual selection
+    - Resolution selection
 - Copy coordinates on right click
 - Option to display your own logo
 
