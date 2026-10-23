@@ -54,6 +54,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#proj4defs">Proj4Defs</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#coordinate-precision">Coordinate precision</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#logo">Logo</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#searchbar">Searchbar</a>
@@ -175,6 +177,17 @@
       &quot;label&quot;: &quot;SWEREF 99 TM&quot; 
     }
   ],
+</code></pre>
+<hr />
+<h3 id="coordinate-precision">Coordinate precision</h3>
+<p>Coordinate display precision values (i.e. coordinates toggled by the top-right-menu) can be set in index.json for easier set-up. It has a default fallback if not set in the index.json. The Z value is also used in the right click menu. Accepted values are <code>integer</code>.</p>
+<pre><code class="language-JSON">  &quot;displayed-coordinate-precision&quot;: [
+      {
+        &quot;E&quot;: 3,
+        &quot;N&quot;: 3,
+        &quot;Z&quot;: 1
+      }
+    ],
 </code></pre>
 <hr />
 <h3 id="logo">Logo</h3>
@@ -316,7 +329,32 @@
 <p><code>hide-buildings</code> - Hide 3D-tiles objects via middle click.</p>
 <p><code>draw-3d</code> - Draw 3D polygons. Drawn polygon works with sun-study and casts shadows. Creates a flat floor on the lowest corner height, and a fixed "roof" on the height from the user input height above ground (calculated by the lowest cornerpoint + user input value). This means it's possible to create bridge like polygons over valleys.</p>
 <p><code>measure</code> - Measure line, area and height. The measurement is point (x,y,z) to point (x,y,z) based. Meaning there is no draped values. </p>
-<p><code>placement</code> - Place 3D-objects in the model. Example of models that can be used: trees or buildings.</p>
+<p><code>placement</code> - Place 3D-objects in the model. Example of models that can be used: trees or buildings. Accepted formats are <code>.glb</code> and <code>.gltf</code>. The <code>"id"</code> must be unique, the same source model are not allowed to be specified more than once. The <code>"heightM"</code> are optional, it's used for calculating the heigh label. For correct use, you need to know your models height. Possible values for <code>"allow-local-objects"</code> are <code>true</code> or <code>false</code>. If set to <code>true</code> the user can import their own models into 3D-kartan. Locally imported models can not be saved by the tools saving function. Neither can they display height labels. The saving is using the <code>"id"</code> so it's recommended that it is stable over time. Source models are not allowed to have external reference files.
+Config the tool following this structure:</p>
+<pre><code class="language-JSON">{
+    &quot;toolName&quot;:   &quot;placement&quot;,
+    &quot;toolTip&quot;:    &quot;Placera 3D-modeller&quot;,
+    &quot;iconVar&quot;:    &quot;--black-icon-place-model&quot;,
+    &quot;actionType&quot;: &quot;panel&quot;,
+    &quot;active&quot;:     true,
+    &quot;models&quot;: [
+      {
+        &quot;id&quot; : &quot;building_1&quot;,
+        &quot;label&quot;: &quot;Byggnad_1&quot;,
+        &quot;src&quot;: &quot;models/byggnad_1/byggnad_1.glb&quot;,
+        &quot;heightM&quot;: 5
+      },
+      {
+        &quot;id&quot; : &quot;building_2&quot;,
+        &quot;label&quot;: &quot;Byggnad_2&quot;,
+        &quot;src&quot;: &quot;models/byggnad_2/byggnad_2.glb&quot;,
+        &quot;heightM&quot;: 8.5
+      }
+    ],
+    &quot;allow-local-objects&quot;: true
+  },
+
+</code></pre>
 <p><code>terrain-section</code> - Draw terrain section with equidistant- or interval placed points. CSV exports are available in configured <code>Proj4Defs</code></p>
 <p>If the tool json-object is included and <code>active: true</code> then the tool button will load. If <code>active: false</code> it will not load, it will also not load if the json-object is excluded from the config file.</p>
 <p>Here is a complete toolbar array including all tools:</p>
@@ -431,7 +469,22 @@
     &quot;toolTip&quot;:    &quot;Placera 3D-modeller&quot;,
     &quot;iconVar&quot;:    &quot;--black-icon-place-model&quot;,
     &quot;actionType&quot;: &quot;panel&quot;,
-    &quot;active&quot;:     true
+    &quot;active&quot;:     true,
+    &quot;models&quot;: [
+      {
+        &quot;id&quot; : &quot;building_1&quot;,
+        &quot;label&quot;: &quot;Byggnad_1&quot;,
+        &quot;src&quot;: &quot;models/byggnad_1/byggnad_1.glb&quot;,
+        &quot;heightM&quot;: 5
+      },
+      {
+        &quot;id&quot; : &quot;building_2&quot;,
+        &quot;label&quot;: &quot;Byggnad_2&quot;,
+        &quot;src&quot;: &quot;models/byggnad_2/byggnad_2.glb&quot;,
+        &quot;heightM&quot;: 8.5
+      }
+    ],
+    &quot;allow-local-objects&quot;: true
   },
   {
     &quot;toolName&quot;:   &quot;terrain-section&quot;,
@@ -736,6 +789,13 @@ Simply put your icon in the images/icons folder and add it in the array.</p>
       &quot;label&quot;: &quot;SWEREF 99 TM&quot; 
     }
   ],
+  &quot;displayed-coordinate-precision&quot;: [
+    {
+      &quot;E&quot;: 3,
+      &quot;N&quot;: 3,
+      &quot;Z&quot;: 1
+    }
+  ],
   &quot;searchbar&quot; : [ 
     { 
       &quot;active&quot; : true
@@ -867,11 +927,33 @@ Simply put your icon in the images/icons folder and add it in the array.</p>
       &quot;active&quot;: true
     },
     {
-      &quot;toolName&quot;: &quot;placement&quot;,
-      &quot;toolTip&quot;: &quot;Placera 3D-modeller&quot;,
-      &quot;iconVar&quot;: &quot;--black-icon-place-model&quot;,
+    &quot;toolName&quot;:   &quot;placement&quot;,
+    &quot;toolTip&quot;:    &quot;Placera 3D-modeller&quot;,
+    &quot;iconVar&quot;:    &quot;--black-icon-place-model&quot;,
+    &quot;actionType&quot;: &quot;panel&quot;,
+    &quot;active&quot;:     true,
+    &quot;models&quot;: [
+      {
+        &quot;id&quot; : &quot;building_1&quot;,
+        &quot;label&quot;: &quot;Byggnad_1&quot;,
+        &quot;src&quot;: &quot;models/byggnad_1/byggnad_1.glb&quot;,
+        &quot;heightM&quot;: 5
+      },
+      {
+        &quot;id&quot; : &quot;building_2&quot;,
+        &quot;label&quot;: &quot;Byggnad_2&quot;,
+        &quot;src&quot;: &quot;models/byggnad_2/byggnad_2.glb&quot;,
+        &quot;heightM&quot;: 8.5
+      }
+    ],
+    &quot;allow-local-objects&quot;: true
+    },
+    {
+      &quot;toolName&quot;:   &quot;terrain-section&quot;,
+      &quot;toolTip&quot;:    &quot;Rita terrängprofil&quot;,
+      &quot;iconVar&quot;:    &quot;--black-icon-landscape&quot;,
       &quot;actionType&quot;: &quot;panel&quot;,
-      &quot;active&quot;: true
+      &quot;active&quot;:     true
     }
   ],
   &quot;projects&quot; : [
